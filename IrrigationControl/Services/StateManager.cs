@@ -1,10 +1,11 @@
 ﻿using nanoFramework.Json;
 using System.IO;
 using System.Collections;
+using IrrigationControl.Interfaces;
 
 namespace IrrigationControl.Services
 {
-    public class StateManager
+    public class StateManager : IStateManager
     {
         private static StateManager _instance;
         private static readonly object _lock = new object();
@@ -18,7 +19,7 @@ namespace IrrigationControl.Services
         private void Init()
         {
             if (!File.Exists(APP_STATE_FILE))
-            {                
+            {
                 File.WriteAllText(APP_STATE_FILE, "{}");
             }
         }
@@ -51,19 +52,19 @@ namespace IrrigationControl.Services
             {
                 stored.Add(key, value);
             }
-            
+
             var json = JsonSerializer.SerializeObject(stored);
-            File.WriteAllText(APP_STATE_FILE, json);          
+            File.WriteAllText(APP_STATE_FILE, json);
         }
 
         public string GetState(string key)
         {
             using var fileStream = new FileStream(APP_STATE_FILE, FileMode.Open);
-            var stored = (Hashtable) JsonConvert.DeserializeObject(fileStream, typeof(Hashtable)) ?? new Hashtable();
+            var stored = (Hashtable)JsonConvert.DeserializeObject(fileStream, typeof(Hashtable)) ?? new Hashtable();
 
             if (stored.Contains(key))
             {
-                return (string) stored[key];
+                return (string)stored[key];
             }
 
             return string.Empty;
