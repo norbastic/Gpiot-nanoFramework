@@ -23,7 +23,7 @@ namespace IrrigationControl
                 services.TryAdd(new ServiceDescriptor(typeof(IStateManager), StateManager.GetInstance()));
                 services.AddHostedService(typeof(WebService));
                 services.AddHostedService(typeof(WIFIService));                
-                services.AddHostedService(typeof(IrrigationScheduleService));
+                services.AddHostedService(typeof(JobScheduleService));
             });
     }
 }
