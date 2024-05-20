@@ -1,6 +1,6 @@
 ﻿using nanoFramework.WebServer;
 using System.Net;
-using IrrigationControl.Helper;
+using IrrigationControl.Helpers;
 
 namespace IrrigationControl.Controllers
 {

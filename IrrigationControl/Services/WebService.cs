@@ -23,6 +23,7 @@ namespace IrrigationControl.Services
 
         public void Stop()
         {
+            _server.Stop();
             _server.Dispose();
         }
     }
