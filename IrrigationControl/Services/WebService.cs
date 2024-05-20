@@ -16,7 +16,8 @@ namespace IrrigationControl.Services
                 HttpProtocol.Http,
                 new Type[] {
                     typeof(ControllerIndex),
-                    typeof(ControllerGpio)
+                    typeof(ControllerGpio),
+                    typeof(ControllerScheduler),
                 });
             _server.Start();
         }
