@@ -8,6 +8,7 @@
         public const string WIFI_STATIC_IP_NETMASK = "WifiStaticIpNetmask";
         public const string WIFI_STATIC_IP_GW = "WifiStaticIpGW";
         public const string WIFI_STATIC_IP_DNS = "WifiStaticIpDNS";
+        public const string SCHEDULE_CHANGED = "ScheduleChanged";
         public const string SCHEDULE1_NAME = "Schedule1Name";
         public const string SCHEDULE1_PIN = "Schedule1Pin";
         public const string SCHEDULE1_START = "Schedule1Start";

@@ -1,4 +1,5 @@
-﻿using IrrigationControl.Models;
+﻿using IrrigationControl.Helpers;
+using IrrigationControl.Models;
 using nanoFramework.Json;
 using nanoFramework.WebServer;
 using System.Text;
@@ -23,7 +24,16 @@ namespace IrrigationControl.Controllers
             try
             {
                 var gpioPinSchedule = JsonConvert.DeserializeObject(rawData, typeof(GpioPinSchedule));
-                WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.Created);
+                var scheduleManager = new ScheduleStateManager();
+                var scheduleAdded = scheduleManager.AddSchedule((GpioPinSchedule) gpioPinSchedule);
+                if (scheduleAdded)
+                {
+                    WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.Created);
+                }
+                else
+                {
+                    WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.BadRequest);
+                }
             }
             catch
             {

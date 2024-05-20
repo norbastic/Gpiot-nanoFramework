@@ -7,6 +7,7 @@ namespace IrrigationControl.Models
 {
     public class GpioPinSchedule
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int PinNumber { get; set; }
         public string Start { get; set; }
@@ -23,6 +24,7 @@ namespace IrrigationControl.Models
                 schedules.Add(
                     new GpioPinSchedule
                     {
+                        Id = 1,
                         Name = StateManager.GetInstance().GetState(AppState.SCHEDULE1_NAME),
                         Start = StateManager.GetInstance().GetState(AppState.SCHEDULE1_START),
                         PinNumber = Convert.ToInt32(StateManager.GetInstance().GetState(AppState.SCHEDULE1_PIN)),
@@ -36,6 +38,7 @@ namespace IrrigationControl.Models
                 schedules.Add(
                     new GpioPinSchedule
                     {
+                        Id = 2,
                         Name = StateManager.GetInstance().GetState(AppState.SCHEDULE2_NAME),
                         Start = StateManager.GetInstance().GetState(AppState.SCHEDULE2_START),
                         PinNumber = Convert.ToInt32(StateManager.GetInstance().GetState(AppState.SCHEDULE2_PIN)),

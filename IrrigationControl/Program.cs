@@ -1,7 +1,6 @@
 using IrrigationControl.Constants;
 using IrrigationControl.Interfaces;
 using IrrigationControl.Services;
-using Microsoft.Extensions.DependencyInjection;
 using nanoFramework.Hosting;
 
 namespace IrrigationControl
@@ -20,10 +19,10 @@ namespace IrrigationControl
             Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.TryAdd(new ServiceDescriptor(typeof(IStateManager), StateManager.GetInstance()));
-                services.AddHostedService(typeof(WebService));
-                services.AddHostedService(typeof(WIFIService));                
+                services.AddHostedService(typeof(WIFIService));
+                services.AddHostedService(typeof(WebService));                                
                 services.AddHostedService(typeof(JobScheduleService));
+                services.AddHostedService(typeof(ScheduleChangeListener));
             });
     }
 }
