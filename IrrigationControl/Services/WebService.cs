@@ -11,7 +11,14 @@ namespace IrrigationControl.Services
 
         public void Start()
         {
-            _server = new WebServer(3000, HttpProtocol.Http, new Type[] { typeof(ControllerIndex) });            
+            _server = new WebServer(
+                3000,
+                HttpProtocol.Http,
+                new Type[] {
+                    typeof(ControllerIndex),
+                    typeof(ControllerGpio)
+                });
+            _server.Start();
         }
 
         public void Stop()

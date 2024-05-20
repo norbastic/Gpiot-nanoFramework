@@ -2,14 +2,27 @@
 
 namespace IrrigationControl.Controllers
 {
-    internal class ControllerIndex
+    public class ControllerIndex
     {
-        [Route("index")]
+
+        private const string IndexHTML =
+        @"<html>
+            <head>
+                <title>
+                    Irrigation Control
+                </title>
+            </head>
+            <body>
+                <h1>Hello from Irrigation Control</h1>
+            </body>
+        </html>";
+
+        [Route("/")]
         [Method("GET")]
-        public void Index(WebServerEventArgs e)
+        public void RouteGetIndex(WebServerEventArgs e)
         {
-            e.Context.Response.ContentType = "text/plain";
-            WebServer.OutPutStream(e.Context.Response, "Hello World!");
+            e.Context.Response.ContentType = "text/html";
+            WebServer.OutPutStream(e.Context.Response, IndexHTML);
         }
     }
 }
