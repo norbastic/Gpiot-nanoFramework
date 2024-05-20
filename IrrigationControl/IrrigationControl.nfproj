@@ -21,7 +21,8 @@
     <Compile Include="Constants\AppState.cs" />
     <Compile Include="Controllers\ControllerGpio.cs" />
     <Compile Include="Controllers\ControllerIndex.cs" />
-    <Compile Include="Helper\GpioHelper.cs" />
+    <Compile Include="Helpers\GpioHelper.cs" />
+    <Compile Include="Helpers\UrlParser.cs" />
     <Compile Include="Models\PinInfo.cs" />
     <Compile Include="Models\WifiSettings.cs" />
     <Compile Include="Program.cs" />

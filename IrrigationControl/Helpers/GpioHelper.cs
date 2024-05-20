@@ -3,7 +3,7 @@ using System;
 using System.Device.Gpio;
 using System.Diagnostics;
 
-namespace IrrigationControl.Helper
+namespace IrrigationControl.Helpers
 {
     internal static class GpioHelper
     {
