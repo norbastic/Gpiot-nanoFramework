@@ -1,4 +1,5 @@
-﻿using nanoFramework.Hosting;
+﻿using IrrigationControl.Controllers;
+using nanoFramework.Hosting;
 using nanoFramework.WebServer;
 using System;
 
@@ -10,7 +11,7 @@ namespace IrrigationControl.Services
 
         public void Start()
         {
-            _server = new WebServer(3000, HttpProtocol.Http);            
+            _server = new WebServer(3000, HttpProtocol.Http, new Type[] { typeof(ControllerIndex) });            
         }
 
         public void Stop()

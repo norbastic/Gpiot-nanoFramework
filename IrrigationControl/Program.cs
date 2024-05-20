@@ -1,11 +1,10 @@
+using IrrigationControl.Constants;
 using IrrigationControl.Interfaces;
 using IrrigationControl.Services;
 using Microsoft.Extensions.DependencyInjection;
 using nanoFramework.Hosting;
-using nanoFramework.Networking;
-using System;
-using System.Diagnostics;
-using System.Threading;
+using System.IO;
+using System.Resources;
 
 namespace IrrigationControl
 {
@@ -13,11 +12,15 @@ namespace IrrigationControl
     {
         public static void Main()
         {
-            var ver = StateManager.GetInstance().GetState("ApplicationVersion");
-            Debug.WriteLine($"Hello from nanoFramework, ver: {ver}");
+            //StateManager.GetInstance().SetState(AppState.WIFI_SSID, "TO_BE_FILLED");
+            // StateManager.GetInstance().SetState(AppState.WIFI_PASSWORD, "TO_BE_FILLED");
+
+            var resourceManager = new ResourceManager("IrrigationControl.Resources", typeof(Program).Assembly);
+
+            var dirs = Directory.GetDirectories("I:\\");
+            var files = Directory.GetFiles("I:\\");
 
             IHost host = CreateHostBuilder().Build();
-
             host.Run();
         }
 
@@ -25,8 +28,9 @@ namespace IrrigationControl
             Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddHostedService(typeof(WIFIService));
-                services.AddSingleton(typeof(IStateManager), typeof(StateManager));
+                services.TryAdd(new ServiceDescriptor(typeof(IStateManager), StateManager.GetInstance()));
+                services.AddHostedService(typeof(WebService));
+                services.AddHostedService(typeof(WIFIService));                
                 services.AddHostedService(typeof(IrrigationScheduleService));
             });
     }
