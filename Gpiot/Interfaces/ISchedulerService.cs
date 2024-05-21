@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Gpiot.Models;
+using System.Collections;
 
 namespace Gpiot.Interfaces
 {
     public interface ISchedulerService
     {
-        void UpdateJobConfigurations(ArrayList newConfigurations);
+        void UpdateJobConfigurations(GpioPinSchedule[] newConfigurations);
     }
 }

@@ -17,3 +17,18 @@ http://192.168.1.150/setpinvalue?pin=2&value=1
 - Will write **LOW** to pin **2**
 
 http://192.168.1.150/setpinvalue?pin=2&value=0
+
+## Schedule controller
+
+- Add schedule to the device
+
+http://192.168.1.150/schedule
+[POST] Body raw:
+```JSON
+{
+    "Name": "Morning",
+    "Pin": 2,
+    "Start": "08:00", // UTC
+    "Interval": "45" // Minutes
+}
+```

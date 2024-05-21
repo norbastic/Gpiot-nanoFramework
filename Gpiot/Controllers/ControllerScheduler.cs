@@ -40,5 +40,30 @@ namespace Gpiot.Controllers
                 WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.InternalServerError);            
             }            
         }
+
+        [Route("schedule")]
+        [Method("GET")]
+        public void GetSchedule(WebServerEventArgs e)
+        {
+            try
+            {
+                var schedules = GpioPinScheduleHelper.GetSchedulesFromState();
+                string json = "string.Empty";
+                json = JsonSerializer.SerializeObject(schedules);
+
+                if (!string.IsNullOrEmpty(json))
+                {
+                    WebServer.OutPutStream(e.Context.Response, json);
+                }
+                else
+                {
+                    WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.NotFound);
+                }
+            }
+            catch
+            {
+                WebServer.OutputHttpCode(e.Context.Response, System.Net.HttpStatusCode.InternalServerError);
+            }
+        }
     }
 }

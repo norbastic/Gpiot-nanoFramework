@@ -1,5 +1,4 @@
 ﻿using Gpiot.Models;
-using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System;
@@ -11,11 +10,12 @@ namespace Gpiot.Services
     public class JobScheduleManager : IDisposable, IJobScheduleManager
     {
         private Timer _timer;
-        private ArrayList _currentJobs = new();
+        private GpioPinScheduleJob[] _currentJobs = new GpioPinScheduleJob[2];
 
         public JobScheduleManager()
         {
-            _currentJobs = GpioPinSchedule.GetSchedulesFromState();
+            var savedSchedules = GpioPinScheduleHelper.GetSchedulesFromState();
+            UpdateCurrentJobs(savedSchedules);
             UpdateOnStartOnStop();
         }
 
@@ -41,9 +41,9 @@ namespace Gpiot.Services
             }
         }
 
-        public void UpdateJobConfigurations(ArrayList newConfigurations)
+        public void UpdateJobConfigurations(GpioPinSchedule[] newConfigurations)
         {
-            _currentJobs = newConfigurations;
+            UpdateCurrentJobs(newConfigurations);
             UpdateOnStartOnStop();
             ScheduleJobs();
         }
@@ -62,7 +62,7 @@ namespace Gpiot.Services
         private void ExecuteJobs(object state)
         {
             var now = DateTime.UtcNow;
-            foreach (GpioPinSchedule job in _currentJobs)
+            foreach (GpioPinScheduleJob job in _currentJobs)
             {
                 if (TimeMatches(now, job.Start))
                 {
@@ -86,14 +86,14 @@ namespace Gpiot.Services
 
         private void UpdateOnStartOnStop()
         {
-            foreach (GpioPinSchedule job in _currentJobs)
+            foreach (GpioPinScheduleJob job in _currentJobs)
             {
                 job.OnStart = () =>
                 {
-                    GpioHelper.ActivatePinOutput(job.PinNumber);
+                    GpioHelper.ActivatePinOutput(job.Pin);
                     GpioHelper.WriteOutputToPin(new PinInfo
                     {
-                        PinNumber = job.PinNumber,
+                        PinNumber = job.Pin,
                         Value = 1
                     });
                 };
@@ -101,11 +101,19 @@ namespace Gpiot.Services
                 {
                     GpioHelper.WriteOutputToPin(new PinInfo
                     {
-                        PinNumber = job.PinNumber,
+                        PinNumber = job.Pin,
                         Value = 0
                     });
-                    GpioHelper.DeactivatePinOutput(job.PinNumber);
+                    GpioHelper.DeactivatePinOutput(job.Pin);
                 };
+            }
+        }
+
+        private void UpdateCurrentJobs(GpioPinSchedule[] gpioPinSchedules)
+        {
+            for (int i = 0; i < gpioPinSchedules.Length; i++)
+            {
+                _currentJobs[i] = new GpioPinScheduleJob(gpioPinSchedules[i]);
             }
         }
     }

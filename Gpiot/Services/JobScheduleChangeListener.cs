@@ -1,4 +1,5 @@
 ﻿using Gpiot.Constants;
+using Gpiot.Helpers;
 using Gpiot.Interfaces;
 using Gpiot.Models;
 using nanoFramework.Hosting;
@@ -21,7 +22,7 @@ namespace Gpiot.Services
                 var scheduleChanged = StateManager.GetInstance().GetState(AppState.SCHEDULE_CHANGED);
                 if (scheduleChanged.Equals("true"))
                 {
-                    var schedules = GpioPinSchedule.GetSchedulesFromState();
+                    var schedules = GpioPinScheduleHelper.GetSchedulesFromState();
                     _jobScheduleManager.UpdateJobConfigurations(schedules);
                     StateManager.GetInstance().SetState(AppState.SCHEDULE_CHANGED, "false");
                 }

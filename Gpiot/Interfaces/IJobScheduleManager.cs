@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Gpiot.Models;
+using System.Collections;
 
 namespace Gpiot.Interfaces
 {
@@ -6,6 +7,6 @@ namespace Gpiot.Interfaces
     {
         void Start();
         void Stop();
-        void UpdateJobConfigurations(ArrayList newConfigurations);
+        void UpdateJobConfigurations(GpioPinSchedule[] newConfigurations);
     }
 }

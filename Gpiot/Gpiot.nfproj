@@ -26,11 +26,13 @@
     <Compile Include="Controllers\ControllerIndex.cs" />
     <Compile Include="Controllers\ControllerScheduler.cs" />
     <Compile Include="Helpers\GpioHelper.cs" />
+    <Compile Include="Helpers\GpioPinScheduleHelper.cs" />
     <Compile Include="Interfaces\IScheduleStateManager.cs" />
     <Compile Include="Helpers\ScheduleStateManager.cs" />
     <Compile Include="Helpers\UrlParser.cs" />
     <Compile Include="Interfaces\ISchedulerService.cs" />
     <Compile Include="Models\GpioPinSchedule.cs" />
+    <Compile Include="Models\GpioPinScheduleJob.cs" />
     <Compile Include="Models\PinInfo.cs" />
     <Compile Include="Models\WifiSettings.cs" />
     <Compile Include="Program.cs" />
