@@ -1,6 +1,9 @@
 ﻿using nanoFramework.WebServer;
 using System.Net;
 using Gpiot.Helpers;
+using System.Device.Gpio;
+using nanoFramework.Json;
+using Gpiot.Models;
 
 namespace Gpiot.Controllers
 {
@@ -71,6 +74,33 @@ namespace Gpiot.Controllers
                 WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.OK);
             }
             else
+            {
+                WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        [Route("pinstatus")]
+        [Method("GET")]
+        public void GetPinStatus(WebServerEventArgs e)
+        {
+            var pinNumber = UrlParser.GetPinFromUrl(e);
+
+            var open = GpioHelper.IsPinActive(pinNumber);
+            var pinValue = GpioHelper.GetPinValue(pinNumber);
+
+            try
+            {
+                var json = JsonSerializer.SerializeObject(
+                    new PinStatus
+                    {
+                        PinNumber = pinNumber,
+                        Open = open.ToString(),
+                        Value = pinValue == PinValue.Low ? 0 : 1
+                    }
+                    );
+                WebServer.OutPutStream(e.Context.Response, json);
+            }
+            catch
             {
                 WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.InternalServerError);
             }

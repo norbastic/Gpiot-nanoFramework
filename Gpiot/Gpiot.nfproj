@@ -34,6 +34,7 @@
     <Compile Include="Models\GpioPinSchedule.cs" />
     <Compile Include="Models\GpioPinScheduleJob.cs" />
     <Compile Include="Models\PinInfo.cs" />
+    <Compile Include="Models\PinStatus.cs" />
     <Compile Include="Models\WifiSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

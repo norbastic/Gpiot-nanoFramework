@@ -69,5 +69,16 @@ namespace Gpiot.Helpers
             var _controller = new GpioController();
             return _controller.IsPinOpen(pinNumber);
         }
+
+        public static PinValue GetPinValue(int pinNumber)
+        {
+            var _controller = new GpioController();
+            if (!_controller.IsPinOpen(pinNumber))
+            {
+                return PinValue.Low;
+            }
+
+            return _controller.Read(pinNumber);
+        }
     }
 }
