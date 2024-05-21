@@ -1,8 +1,8 @@
-﻿using IrrigationControl.Constants;
+﻿using Gpiot.Constants;
 using nanoFramework.Hosting;
 using System.Threading;
 
-namespace IrrigationControl.Services
+namespace Gpiot.Services
 {
     public class ScheduleChangeListener : BackgroundService
     {

@@ -1,10 +1,10 @@
-﻿using IrrigationControl.Helpers;
-using IrrigationControl.Models;
+﻿using Gpiot.Helpers;
+using Gpiot.Models;
 using nanoFramework.Json;
 using nanoFramework.WebServer;
 using System.Text;
 
-namespace IrrigationControl.Controllers
+namespace Gpiot.Controllers
 {
     public class ControllerScheduler
     {

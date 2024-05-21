@@ -1,9 +1,9 @@
-﻿using IrrigationControl.Controllers;
+﻿using Gpiot.Controllers;
 using nanoFramework.Hosting;
 using nanoFramework.WebServer;
 using System;
 
-namespace IrrigationControl.Services
+namespace Gpiot.Services
 {
     internal class WebService : IHostedService
     {

@@ -1,12 +1,12 @@
-﻿using IrrigationControl.Constants;
-using IrrigationControl.Models;
+﻿using Gpiot.Constants;
+using Gpiot.Models;
 using nanoFramework.Hosting;
 using nanoFramework.Networking;
 using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace IrrigationControl.Services
+namespace Gpiot.Services
 {
     public class WIFIService : SchedulerService
     {

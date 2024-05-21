@@ -1,9 +1,9 @@
-﻿using IrrigationControl.Constants;
-using IrrigationControl.Services;
+﻿using Gpiot.Constants;
+using Gpiot.Services;
 using System;
 using System.Collections;
 
-namespace IrrigationControl.Models
+namespace Gpiot.Models
 {
     public class GpioPinSchedule
     {

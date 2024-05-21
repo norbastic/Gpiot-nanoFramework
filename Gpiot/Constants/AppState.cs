@@ -1,4 +1,4 @@
-﻿namespace IrrigationControl.Constants
+﻿namespace Gpiot.Constants
 {
     internal class AppState
     {

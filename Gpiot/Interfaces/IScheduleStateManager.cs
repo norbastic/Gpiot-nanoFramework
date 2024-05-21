@@ -1,6 +1,6 @@
-﻿using IrrigationControl.Models;
+﻿using Gpiot.Models;
 
-namespace IrrigationControl.Interfaces
+namespace Gpiot.Interfaces
 {
     public interface IScheduleStateManager
     {

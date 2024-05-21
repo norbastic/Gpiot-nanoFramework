@@ -1,9 +1,9 @@
-﻿using IrrigationControl.Models;
+﻿using Gpiot.Models;
 using System;
 using System.Device.Gpio;
 using System.Diagnostics;
 
-namespace IrrigationControl.Helpers
+namespace Gpiot.Helpers
 {
     internal static class GpioHelper
     {

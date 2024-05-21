@@ -1,13 +1,13 @@
-﻿using IrrigationControl.Helpers;
-using IrrigationControl.Interfaces;
-using IrrigationControl.Models;
+﻿using Gpiot.Helpers;
+using Gpiot.Interfaces;
+using Gpiot.Models;
 using nanoFramework.Hosting;
 using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 
-namespace IrrigationControl.Services
+namespace Gpiot.Services
 {
     public class JobScheduleService : IHostedService, IDisposable, ISchedulerService
     {

@@ -1,8 +1,8 @@
 ﻿using nanoFramework.WebServer;
 using System.Net;
-using IrrigationControl.Helpers;
+using Gpiot.Helpers;
 
-namespace IrrigationControl.Controllers
+namespace Gpiot.Controllers
 {
     public class ControllerGpio
     {      

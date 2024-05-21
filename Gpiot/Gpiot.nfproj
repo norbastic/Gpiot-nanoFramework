@@ -12,9 +12,12 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <FileAlignment>512</FileAlignment>
-    <RootNamespace>IrrigationControl</RootNamespace>
-    <AssemblyName>IrrigationControl</AssemblyName>
+    <RootNamespace>Gpiot</RootNamespace>
+    <AssemblyName>Gpiot</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="nanoFramework">
+    <NF_GenerateStubsRootName>Gpiot</NF_GenerateStubsRootName>
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>

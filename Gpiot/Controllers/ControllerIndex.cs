@@ -1,6 +1,6 @@
 ﻿using nanoFramework.WebServer;
 
-namespace IrrigationControl.Controllers
+namespace Gpiot.Controllers
 {
     public class ControllerIndex
     {

@@ -1,10 +1,10 @@
-﻿using IrrigationControl.Constants;
-using IrrigationControl.Interfaces;
-using IrrigationControl.Models;
-using IrrigationControl.Services;
+﻿using Gpiot.Constants;
+using Gpiot.Interfaces;
+using Gpiot.Models;
+using Gpiot.Services;
 using System;
 
-namespace IrrigationControl.Helpers
+namespace Gpiot.Helpers
 {
     public class ScheduleStateManager : IScheduleStateManager
     {

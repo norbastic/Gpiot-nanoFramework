@@ -1,9 +1,9 @@
-﻿using IrrigationControl.Models;
+﻿using Gpiot.Models;
 using nanoFramework.WebServer;
 using System.Net;
 using System;
 
-namespace IrrigationControl.Helpers
+namespace Gpiot.Helpers
 {
     public static class UrlParser
     {

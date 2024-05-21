@@ -1,4 +1,4 @@
-﻿namespace IrrigationControl.Interfaces
+﻿namespace Gpiot.Interfaces
 {
     public interface IStateManager
     {

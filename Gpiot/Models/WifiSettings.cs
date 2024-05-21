@@ -1,4 +1,4 @@
-﻿namespace IrrigationControl.Models
+﻿namespace Gpiot.Models
 {
     internal class WifiSettings
     {

@@ -1,9 +1,9 @@
 ﻿using nanoFramework.Json;
 using System.IO;
 using System.Collections;
-using IrrigationControl.Interfaces;
+using Gpiot.Interfaces;
 
-namespace IrrigationControl.Services
+namespace Gpiot.Services
 {
     public class StateManager : IStateManager
     {

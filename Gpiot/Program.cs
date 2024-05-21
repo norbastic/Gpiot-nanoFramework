@@ -1,9 +1,9 @@
-using IrrigationControl.Constants;
-using IrrigationControl.Interfaces;
-using IrrigationControl.Services;
+using Gpiot.Constants;
+using Gpiot.Interfaces;
+using Gpiot.Services;
 using nanoFramework.Hosting;
 
-namespace IrrigationControl
+namespace Gpiot
 {
     public class Program
     {
