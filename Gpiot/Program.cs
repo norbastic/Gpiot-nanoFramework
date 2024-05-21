@@ -1,6 +1,7 @@
 using Gpiot.Constants;
 using Gpiot.Interfaces;
 using Gpiot.Services;
+using Microsoft.Extensions.DependencyInjection;
 using nanoFramework.Hosting;
 
 namespace Gpiot
@@ -20,9 +21,10 @@ namespace Gpiot
             .ConfigureServices(services =>
             {
                 services.AddHostedService(typeof(WIFIService));
-                services.AddHostedService(typeof(WebService));                                
+                services.AddHostedService(typeof(WebService));
+                services.AddSingleton(typeof(IJobScheduleManager), new JobScheduleManager());
                 services.AddHostedService(typeof(JobScheduleService));
-                services.AddHostedService(typeof(ScheduleChangeListener));
+                services.AddHostedService(typeof(JobScheduleChangeListener));
             });
     }
 }
